@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { Question } from "@/data/questions";
 import { EXAM_PASS, EXAM_SIZE } from "@/data/questions";
@@ -24,9 +24,16 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
   const [revealed, setRevealed] = useState<boolean[]>([]); // practice mode per-question
   const [finished, setFinished] = useState(false);
   const [seed, setSeed] = useState(0); // bump to restart
+  const builtForSeed = useRef(-1); // which seed the current question set was built for
 
   // Prepare questions on the client to avoid hydration mismatch from randomness.
+  // Build ONCE per seed. Guards against React StrictMode's double-invoke in dev
+  // (which would otherwise re-pick and visibly swap the questions) and against
+  // any incidental re-render re-running the build mid-exam.
   useEffect(() => {
+    if (builtForSeed.current === seed) return; // already built for this seed
+    builtForSeed.current = seed;
+
     const prepared =
       mode === "exam"
         ? pickExam(pool, Math.min(EXAM_SIZE, pool.length))
@@ -82,7 +89,7 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
           <div className="mt-6 flex flex-wrap gap-3 justify-center">
             <button
               onClick={() => setSeed((s) => s + 1)}
-              className="px-5 py-2.5 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+              className="px-5 py-2.5 rounded-lg bg-black text-white font-semibold hover:bg-slate-800 transition"
             >
               {mode === "exam" ? "New exam" : "Restart"}
             </button>
@@ -104,7 +111,7 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
             return (
               <div
                 key={q.id}
-                className="rounded-xl border border-slate-200 bg-white p-5"
+                className="rounded-xl border border-slate-300 bg-white p-5"
               >
                 <div className="flex items-start gap-3">
                   <span
@@ -143,7 +150,7 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
                     <p className="mt-2 text-sm text-slate-600 bg-slate-50 rounded-md px-3 py-2">
                       <span className="font-semibold">Why: </span>
                       {q.explanation}{" "}
-                      <span className="text-slate-400">
+                      <span className="text-slate-500">
                         (Manual p. {q.page})
                       </span>
                     </p>
@@ -192,15 +199,15 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
       </div>
       {subtitle && <p className="text-sm text-slate-500 mb-3">{subtitle}</p>}
 
-      <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden mb-6">
+      <div className="h-2 w-full bg-slate-300 rounded-full overflow-hidden mb-6">
         <div
-          className="h-full bg-blue-600 transition-all duration-300"
+          className="h-full bg-black transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-blue-600">
+      <div className="rounded-2xl border border-slate-300 bg-white p-6 shadow-sm">
+        <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-indigo-600">
           {q.category}
         </div>
         <p className="text-lg font-semibold text-slate-800 mb-5">{q.question}</p>
@@ -209,14 +216,14 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
           {q.shuffledOptions.map((opt, oi) => {
             const selected = chosen === oi;
             let cls =
-              "border-slate-200 bg-white hover:border-blue-400 hover:bg-blue-50";
+              "border-slate-300 bg-white hover:border-indigo-400 hover:bg-indigo-50";
             if (isRevealed) {
               if (oi === q.shuffledAnswer)
                 cls = "border-emerald-400 bg-emerald-50";
               else if (selected) cls = "border-rose-400 bg-rose-50";
-              else cls = "border-slate-200 bg-white opacity-70";
+              else cls = "border-slate-300 bg-white opacity-70";
             } else if (selected) {
-              cls = "border-blue-500 bg-blue-50";
+              cls = "border-indigo-500 bg-indigo-50";
             }
             return (
               <button
@@ -263,7 +270,7 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
         <button
           onClick={goNext}
           disabled={chosen === null}
-          className="px-6 py-2.5 rounded-lg bg-blue-600 text-white font-semibold disabled:opacity-40 hover:bg-blue-700 transition"
+          className="px-6 py-2.5 rounded-lg bg-black text-white font-semibold disabled:opacity-40 hover:bg-slate-800 transition"
         >
           {isLast ? "Finish" : "Next →"}
         </button>

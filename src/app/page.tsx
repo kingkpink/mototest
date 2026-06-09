@@ -7,7 +7,7 @@ export default function Home() {
     <div className="space-y-12">
       {/* Hero */}
       <section className="text-center pt-6">
-        <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 text-blue-700 px-3 py-1 text-xs font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 text-indigo-700 px-3 py-1 text-xs font-semibold mb-4">
           Pennsylvania • Class M & Learner&apos;s Permit
         </div>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -23,7 +23,7 @@ export default function Home() {
         <div className="mt-8 flex flex-wrap gap-3 justify-center">
           <Link
             href="/exam"
-            className="px-7 py-3 rounded-xl bg-blue-600 text-white font-semibold text-lg hover:bg-blue-700 shadow-sm transition"
+            className="px-7 py-3 rounded-xl bg-black text-white font-semibold text-lg hover:bg-slate-800 shadow-sm transition"
           >
             Take the mock exam →
           </Link>
@@ -37,7 +37,13 @@ export default function Home() {
       </section>
 
       {/* Mode cards */}
-      <section className="grid gap-5 sm:grid-cols-3">
+      <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Card
+          href="/about"
+          emoji="ℹ️"
+          title="The Test"
+          desc="Format, number of questions, passing score, and what to expect at the DMV counter."
+        />
         <Card
           href="/exam"
           emoji="📝"
@@ -60,7 +66,7 @@ export default function Home() {
 
       {/* Test facts */}
       <section className="grid gap-6 md:grid-cols-2">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6">
+        <div className="rounded-2xl border border-slate-300 bg-white p-6">
           <h2 className="text-lg font-bold text-slate-800 mb-4">
             About the knowledge test
           </h2>
@@ -73,14 +79,14 @@ export default function Home() {
             ))}
           </dl>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-white p-6">
+        <div className="rounded-2xl border border-slate-300 bg-white p-6">
           <h2 className="text-lg font-bold text-slate-800 mb-4">
             Learner&apos;s permit rules
           </h2>
           <ul className="space-y-2.5">
             {PERMIT_RULES.map((r) => (
               <li key={r} className="flex gap-2 text-sm text-slate-700">
-                <span className="text-blue-500 mt-0.5">●</span>
+                <span className="text-indigo-500 mt-0.5">●</span>
                 {r}
               </li>
             ))}
@@ -105,10 +111,10 @@ function Card({
   return (
     <Link
       href={href}
-      className="rounded-2xl border border-slate-200 bg-white p-6 hover:border-blue-400 hover:shadow-md transition group"
+      className="rounded-2xl border border-slate-300 bg-white p-6 hover:border-indigo-400 hover:shadow-md transition group"
     >
       <div className="text-3xl mb-3">{emoji}</div>
-      <h3 className="font-bold text-slate-800 group-hover:text-blue-600">
+      <h3 className="font-bold text-slate-800 group-hover:text-indigo-600">
         {title}
       </h3>
       <p className="mt-1 text-sm text-slate-600">{desc}</p>

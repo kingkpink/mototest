@@ -104,7 +104,7 @@ export default function GuidePage() {
       </header>
 
       <Section title="Key numbers to memorize">
-        <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden">
+        <div className="rounded-2xl border border-slate-300 bg-white overflow-hidden">
           {KEY_NUMBERS.map((n, i) => (
             <div
               key={n.fact}
@@ -122,12 +122,12 @@ export default function GuidePage() {
       <Section title="Riding rules at a glance">
         <div className="space-y-5">
           {RIDING.map((b) => (
-            <div key={b.h} className="rounded-2xl border border-slate-200 bg-white p-5">
+            <div key={b.h} className="rounded-2xl border border-slate-300 bg-white p-5">
               <h3 className="font-bold text-slate-800">{b.h}</h3>
               <ul className="mt-2 space-y-1.5">
                 {b.pts.map((p) => (
                   <li key={p} className="flex gap-2 text-sm text-slate-700">
-                    <span className="text-blue-500 mt-0.5">●</span>
+                    <span className="text-indigo-500 mt-0.5">●</span>
                     {p}
                   </li>
                 ))}
@@ -141,7 +141,7 @@ export default function GuidePage() {
         <ol className="space-y-3">
           {LICENSE_STEPS.map((s, i) => (
             <li key={s} className="flex gap-3 text-sm text-slate-700">
-              <span className="shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white font-bold grid place-items-center">
+              <span className="shrink-0 w-6 h-6 rounded-full bg-indigo-600 text-white font-bold grid place-items-center">
                 {i + 1}
               </span>
               <span className="pt-0.5">{s}</span>
@@ -161,7 +161,7 @@ export default function GuidePage() {
           <ListCard items={UNDER_18} />
         </Section>
         <Section title="License restrictions">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-3">
+          <div className="rounded-2xl border border-slate-300 bg-white p-5 space-y-3">
             {RESTRICTIONS.map((r) => (
               <div key={r.code} className="text-sm">
                 <span className="font-bold text-slate-800">{r.code}</span>
@@ -192,10 +192,10 @@ function Section({
 
 function ListCard({ items }: { items: string[] }) {
   return (
-    <ul className="rounded-2xl border border-slate-200 bg-white p-5 space-y-2">
+    <ul className="rounded-2xl border border-slate-300 bg-white p-5 space-y-2">
       {items.map((it) => (
         <li key={it} className="flex gap-2 text-sm text-slate-700">
-          <span className="text-blue-500 mt-0.5">●</span>
+          <span className="text-indigo-500 mt-0.5">●</span>
           {it}
         </li>
       ))}

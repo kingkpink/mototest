@@ -24,11 +24,12 @@ export default function PracticePage() {
       <div>
         <button
           onClick={() => setSelected(null)}
-          className="mb-5 text-sm font-medium text-blue-600 hover:underline"
+          className="mb-5 text-sm font-medium text-indigo-600 hover:underline"
         >
           ← Choose another topic
         </button>
         <Quiz
+          key={selected}
           mode="practice"
           pool={pool}
           title={selected === "ALL" ? "All Topics" : selected}
@@ -48,15 +49,15 @@ export default function PracticePage() {
 
       <button
         onClick={() => setSelected("ALL")}
-        className="mt-6 w-full text-left rounded-xl border-2 border-blue-200 bg-blue-50 p-5 hover:border-blue-400 transition"
+        className="mt-6 w-full text-left rounded-xl border-2 border-indigo-200 bg-indigo-50 p-5 hover:border-indigo-400 transition"
       >
         <div className="flex items-center justify-between">
-          <span className="font-bold text-blue-800">All topics</span>
-          <span className="text-sm text-blue-600 font-medium">
+          <span className="font-bold text-indigo-800">All topics</span>
+          <span className="text-sm text-indigo-600 font-medium">
             {QUESTIONS.length} questions
           </span>
         </div>
-        <p className="text-sm text-blue-700/80 mt-1">
+        <p className="text-sm text-indigo-700/80 mt-1">
           Every question in the bank, shuffled.
         </p>
       </button>
@@ -66,11 +67,11 @@ export default function PracticePage() {
           <button
             key={c}
             onClick={() => setSelected(c)}
-            className="text-left rounded-xl border border-slate-200 bg-white p-4 hover:border-blue-400 hover:shadow-sm transition"
+            className="text-left rounded-xl border border-slate-300 bg-white p-4 hover:border-indigo-400 hover:shadow-sm transition"
           >
             <div className="flex items-center justify-between">
               <span className="font-semibold text-slate-800">{c}</span>
-              <span className="text-xs text-slate-400 font-medium">
+              <span className="text-xs text-slate-500 font-medium">
                 {counts.get(c) ?? 0} Q
               </span>
             </div>
