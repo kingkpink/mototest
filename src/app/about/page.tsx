@@ -141,7 +141,7 @@ export default function AboutPage() {
         <ul className="rounded-2xl border border-slate-300 bg-white p-5 grid sm:grid-cols-2 gap-2">
           {COVERED.map((c) => (
             <li key={c} className="flex gap-2 text-sm text-slate-700">
-              <span className="text-indigo-500 mt-0.5">●</span>
+              <span className="text-black mt-0.5">●</span>
               {c}
             </li>
           ))}
@@ -241,7 +241,7 @@ function ListCard({ items }: { items: string[] }) {
     <ul className="rounded-2xl border border-slate-300 bg-white p-5 space-y-2 h-full">
       {items.map((it) => (
         <li key={it} className="flex gap-2 text-sm text-slate-700">
-          <span className="text-indigo-500 mt-0.5">●</span>
+          <span className="text-black mt-0.5">●</span>
           {it}
         </li>
       ))}

@@ -20,6 +20,11 @@ export default function Home() {
           Motorcycle Operator Manual — the same source the real knowledge test uses.
           Free, no signup, unlimited attempts.
         </p>
+        <div className="mt-5 max-w-2xl mx-auto rounded-xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm text-emerald-800">
+          <span className="font-semibold">✅ Field-tested:</span> riders who took
+          the real PA permit test at the DMV report these practice questions are
+          nearly identical to the ones on the actual exam.
+        </div>
         <div className="mt-8 flex flex-wrap gap-3 justify-center">
           <Link
             href="/exam"
@@ -86,7 +91,7 @@ export default function Home() {
           <ul className="space-y-2.5">
             {PERMIT_RULES.map((r) => (
               <li key={r} className="flex gap-2 text-sm text-slate-700">
-                <span className="text-indigo-500 mt-0.5">●</span>
+                <span className="text-black mt-0.5">●</span>
                 {r}
               </li>
             ))}

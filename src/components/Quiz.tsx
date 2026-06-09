@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Question } from "@/data/questions";
 import { EXAM_PASS, EXAM_SIZE } from "@/data/questions";
 import { pickExam, prepare, type PreparedQuestion } from "@/lib/shuffle";
+import { recordAnswer } from "@/lib/stats";
 
 type Mode = "exam" | "practice";
 
@@ -179,12 +180,20 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
       const r = [...revealed];
       r[current] = true;
       setRevealed(r);
+      recordAnswer(q.id, optIndex === q.shuffledAnswer);
     }
   }
 
   function goNext() {
-    if (isLast) setFinished(true);
-    else setCurrent((c) => c + 1);
+    if (isLast) {
+      if (mode === "exam") {
+        // Exam grades at the end — record the whole sheet once.
+        questions.forEach((qq, i) =>
+          recordAnswer(qq.id, answers[i] === qq.shuffledAnswer)
+        );
+      }
+      setFinished(true);
+    } else setCurrent((c) => c + 1);
   }
 
   const progress = ((current + 1) / questions.length) * 100;
