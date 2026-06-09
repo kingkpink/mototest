@@ -64,13 +64,13 @@ export default function Home() {
       <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <Card
           href="/about"
-          emoji="ℹ️"
+          emoji="❓"
           title="The Test"
           desc="Format, number of questions, passing score, and what to expect at the DMV counter."
         />
         <Card
           href="/exam"
-          emoji="📝"
+          emoji="📄"
           title="Mock Exam"
           desc="20 random questions, just like the DMV. Score 16+ (80%) to pass. No hints until the end."
         />
@@ -82,7 +82,7 @@ export default function Home() {
         />
         <Card
           href="/guide"
-          emoji="📖"
+          emoji="📕"
           title="Study Guide"
           desc="The key facts, numbers, and permit rules condensed from the whole manual."
         />
