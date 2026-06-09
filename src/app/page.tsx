@@ -49,7 +49,7 @@ export default function Home() {
             href="/exam"
             className="px-7 py-3 rounded-xl bg-black text-white font-semibold text-lg hover:bg-slate-800 shadow-sm transition"
           >
-            Take the mock exam →
+            Take the mock exam (Learner&apos;s Permit)
           </Link>
           <Link
             href="/practice"

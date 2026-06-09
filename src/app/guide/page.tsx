@@ -104,6 +104,25 @@ export default function GuidePage() {
           Master these and the {TEST_FACTS[0].value.toLowerCase()} on the real test
           will feel easy.
         </p>
+        <a
+          href="/pub-147-motorcycle-manual.pdf"
+          download
+          className="mt-4 inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:border-indigo-400 hover:text-indigo-600 transition"
+        >
+          ⬇️ Download the full manual (PUB 147, PDF · 5.6 MB)
+        </a>
+        <p className="mt-2 text-xs text-slate-500">
+          🛡️ Scanned clean —{" "}
+          <a
+            href="https://www.virustotal.com/gui/file/6516663100314cf5bb2b5b5270c210eb1b80048c7b36fc91b691bf88ccfb1d24/detection"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-slate-700"
+          >
+            view the VirusTotal report
+          </a>{" "}
+          for this exact file.
+        </p>
       </header>
 
       <Section title="Key numbers to memorize">
