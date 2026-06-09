@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import {
   TEST_FACTS,
   PERMIT_RULES,
@@ -82,6 +83,7 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
+      <BreadcrumbJsonLd name="What the Test Is Like" path="/about" />
       <header>
         <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 text-indigo-700 px-3 py-1 text-xs font-semibold mb-3">
           Learner&apos;s Permit Knowledge Test

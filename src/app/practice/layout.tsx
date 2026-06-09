@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 
 // practice/page.tsx is a client component and can't export metadata,
 // so the route's SEO tags live here.
@@ -12,5 +13,10 @@ export const metadata: Metadata = {
 export default function PracticeLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return children;
+  return (
+    <>
+      <BreadcrumbJsonLd name="Practice by Topic" path="/practice" />
+      {children}
+    </>
+  );
 }

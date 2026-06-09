@@ -1,3 +1,4 @@
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import {
   TEST_FACTS,
   PERMIT_RULES,
@@ -97,6 +98,7 @@ const RIDING: { h: string; pts: string[] }[] = [
 export default function GuidePage() {
   return (
     <div className="max-w-3xl mx-auto space-y-10">
+      <BreadcrumbJsonLd name="Study Guide" path="/guide" />
       <header>
         <h1 className="text-3xl font-bold text-slate-900">Study Guide</h1>
         <p className="mt-2 text-slate-600">

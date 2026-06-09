@@ -1,4 +1,5 @@
 import Quiz from "@/components/Quiz";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { QUESTIONS, EXAM_PASS, EXAM_SIZE } from "@/data/questions";
 
 export const metadata = {
@@ -10,11 +11,14 @@ export const metadata = {
 
 export default function ExamPage() {
   return (
-    <Quiz
-      mode="exam"
-      pool={QUESTIONS}
-      title="Mock Knowledge Exam"
-      subtitle={`${EXAM_SIZE} random questions — score ${EXAM_PASS} correct (80%) to pass, just like the real PA test.`}
-    />
+    <>
+      <BreadcrumbJsonLd name="Mock Exam" path="/exam" />
+      <Quiz
+        mode="exam"
+        pool={QUESTIONS}
+        title="Mock Knowledge Exam"
+        subtitle={`${EXAM_SIZE} random questions — score ${EXAM_PASS} correct (80%) to pass, just like the real PA test.`}
+      />
+    </>
   );
 }

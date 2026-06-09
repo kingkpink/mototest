@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description:
       "Free PA motorcycle permit practice test. Questions nearly identical to the real DMV exam. 20 questions, 80% to pass.",
     url: "https://pamotorcycletest.com",
-    siteName: "PA Moto Test",
+    siteName: "PA Motorcycle Test",
     locale: "en_US",
     type: "website",
   },
