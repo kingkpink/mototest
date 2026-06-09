@@ -8,7 +8,10 @@ import {
 } from "@/data/facts";
 
 export const metadata = {
-  title: "Study Guide — PA Motorcycle Permit",
+  title: "Study Guide",
+  description:
+    "Key numbers, permit rules, and licensing steps for the PA motorcycle knowledge test, condensed from the PennDOT Motorcycle Operator Manual (PUB 147).",
+  alternates: { canonical: "/guide" },
 };
 
 const KEY_NUMBERS: { fact: string; value: string }[] = [

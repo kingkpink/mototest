@@ -9,9 +9,10 @@ import {
 } from "@/data/facts";
 
 export const metadata = {
-  title: "What the Test Is Like — PA Motorcycle Permit",
+  title: "What the Test Is Like",
   description:
     "How the Pennsylvania motorcycle learner's permit knowledge test is structured: format, number of questions, passing score, what's covered, and what to expect at the Driver License Center.",
+  alternates: { canonical: "/about" },
 };
 
 const FORMAT: { q: string; a: string }[] = [
@@ -62,9 +63,25 @@ const BRING: string[] = [
   "Be ready for a vision screening the same visit.",
 ];
 
+// FAQPage rich-snippet markup, built from the SAME array that renders the
+// visible Q&A section below — Google requires the two to match.
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FORMAT.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto space-y-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <header>
         <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 text-indigo-700 px-3 py-1 text-xs font-semibold mb-3">
           Learner&apos;s Permit Knowledge Test

@@ -2,9 +2,28 @@ import Link from "next/link";
 import { QUESTIONS } from "@/data/questions";
 import { TEST_FACTS, PERMIT_RULES } from "@/data/facts";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
+const websiteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "PA Moto Test",
+  url: "https://pamotorcycletest.com",
+  description:
+    "Free Pennsylvania motorcycle permit practice test based on the PennDOT Motorcycle Operator Manual (PUB 147).",
+};
+
 export default function Home() {
   return (
     <div className="space-y-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteStructuredData),
+        }}
+      />
       {/* Hero */}
       <section className="text-center pt-6">
         <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 text-indigo-700 px-3 py-1 text-xs font-semibold mb-4">
