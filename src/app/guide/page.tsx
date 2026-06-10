@@ -100,7 +100,7 @@ export default function GuidePage() {
     <div className="max-w-3xl mx-auto space-y-10">
       <BreadcrumbJsonLd name="Study Guide" path="/guide" />
       <header>
-        <h1 className="text-3xl font-bold text-slate-900">Study Guide</h1>
+        <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Study Guide</h1>
         <p className="mt-2 text-slate-600">
           Everything condensed from the PennDOT Motorcycle Operator Manual (PUB 147).
           Master these and the {TEST_FACTS[0].value.toLowerCase()} on the real test
@@ -109,12 +109,24 @@ export default function GuidePage() {
         <a
           href="/pub-147-motorcycle-manual.pdf"
           download
-          className="mt-4 inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:border-indigo-400 hover:text-indigo-600 transition"
+          className="mt-4 inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:border-blue-700 hover:text-blue-800 transition"
         >
-          ⬇️ Download the full manual (PUB 147, PDF · 5.6 MB)
+          <svg
+            className="h-4 w-4"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M8 2v8m0 0L5 7m3 3 3-3M3 13h10" />
+          </svg>
+          Download the full manual (PUB 147, PDF · 5.6 MB)
         </a>
         <p className="mt-2 text-xs text-slate-500">
-          🛡️ Scanned clean —{" "}
+          Scanned clean —{" "}
           <a
             href="https://www.virustotal.com/gui/file/6516663100314cf5bb2b5b5270c210eb1b80048c7b36fc91b691bf88ccfb1d24/detection"
             target="_blank"
@@ -128,7 +140,7 @@ export default function GuidePage() {
       </header>
 
       <Section title="Key numbers to memorize">
-        <div className="rounded-2xl border border-slate-300 bg-white overflow-hidden">
+        <div className="rounded-lg border border-slate-200 bg-white overflow-hidden">
           {KEY_NUMBERS.map((n, i) => (
             <div
               key={n.fact}
@@ -146,12 +158,12 @@ export default function GuidePage() {
       <Section title="Riding rules at a glance">
         <div className="space-y-5">
           {RIDING.map((b) => (
-            <div key={b.h} className="rounded-2xl border border-slate-300 bg-white p-5">
-              <h3 className="font-bold text-slate-800">{b.h}</h3>
+            <div key={b.h} className="rounded-lg border border-slate-200 bg-white p-5">
+              <h3 className="font-semibold text-slate-900">{b.h}</h3>
               <ul className="mt-2 space-y-1.5">
                 {b.pts.map((p) => (
-                  <li key={p} className="flex gap-2 text-sm text-slate-700">
-                    <span className="text-black mt-0.5">●</span>
+                  <li key={p} className="flex gap-2.5 text-sm text-slate-700">
+                    <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-blue-800" />
                     {p}
                   </li>
                 ))}
@@ -165,7 +177,7 @@ export default function GuidePage() {
         <ol className="space-y-3">
           {LICENSE_STEPS.map((s, i) => (
             <li key={s} className="flex gap-3 text-sm text-slate-700">
-              <span className="shrink-0 w-6 h-6 rounded-full bg-indigo-600 text-white font-bold grid place-items-center">
+              <span className="shrink-0 w-6 h-6 rounded-full bg-blue-800 text-white text-xs font-semibold grid place-items-center">
                 {i + 1}
               </span>
               <span className="pt-0.5">{s}</span>
@@ -185,7 +197,7 @@ export default function GuidePage() {
           <ListCard items={UNDER_18} />
         </Section>
         <Section title="License restrictions">
-          <div className="rounded-2xl border border-slate-300 bg-white p-5 space-y-3">
+          <div className="rounded-lg border border-slate-200 bg-white p-5 space-y-3">
             {RESTRICTIONS.map((r) => (
               <div key={r.code} className="text-sm">
                 <span className="font-bold text-slate-800">{r.code}</span>
@@ -208,7 +220,7 @@ function Section({
 }) {
   return (
     <section>
-      <h2 className="text-lg font-bold text-slate-800 mb-3">{title}</h2>
+      <h2 className="text-lg font-semibold text-slate-900 tracking-tight mb-3">{title}</h2>
       {children}
     </section>
   );
@@ -216,10 +228,10 @@ function Section({
 
 function ListCard({ items }: { items: string[] }) {
   return (
-    <ul className="rounded-2xl border border-slate-300 bg-white p-5 space-y-2">
+    <ul className="rounded-lg border border-slate-200 bg-white p-5 space-y-2">
       {items.map((it) => (
-        <li key={it} className="flex gap-2 text-sm text-slate-700">
-          <span className="text-black mt-0.5">●</span>
+        <li key={it} className="flex gap-2.5 text-sm text-slate-700">
+          <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-blue-800" />
           {it}
         </li>
       ))}

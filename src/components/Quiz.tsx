@@ -68,15 +68,21 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
     return (
       <div className="max-w-3xl mx-auto">
         <div
-          className={`rounded-2xl p-8 text-center border ${
+          className={`rounded-lg p-6 sm:p-8 text-center border ${
             passed
               ? "bg-emerald-50 border-emerald-200"
-              : "bg-rose-50 border-rose-200"
+              : "bg-red-50 border-red-200"
           }`}
         >
-          <div className="text-5xl mb-2">{passed ? "🎉" : "📚"}</div>
-          <h2 className="text-2xl font-bold text-slate-800">
-            {passed ? "You passed!" : "Keep studying"}
+          <p
+            className={`text-xs font-semibold uppercase tracking-widest mb-2 ${
+              passed ? "text-emerald-700" : "text-red-700"
+            }`}
+          >
+            {passed ? "Result: Pass" : "Result: Below passing"}
+          </p>
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+            {passed ? "You passed" : "Keep studying"}
           </h2>
           <p className="mt-2 text-slate-600">
             You scored <span className="font-bold">{score}</span> /{" "}
@@ -87,10 +93,10 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
               ? `The real PA test needs ${EXAM_PASS} of ${EXAM_SIZE} correct (80%).`
               : `Passing target: ${passNeeded} of ${questions.length}.`}
           </p>
-          <div className="mt-6 flex flex-wrap gap-3 justify-center">
+          <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={() => setSeed((s) => s + 1)}
-              className="px-5 py-2.5 rounded-lg bg-black text-white font-semibold hover:bg-slate-800 transition"
+              className="px-5 py-2.5 rounded-lg bg-blue-800 text-white font-semibold hover:bg-blue-900 transition"
             >
               {mode === "exam" ? "New exam" : "Restart"}
             </button>
@@ -112,12 +118,12 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
             return (
               <div
                 key={q.id}
-                className="rounded-xl border border-slate-300 bg-white p-5"
+                className="rounded-lg border border-slate-200 bg-white p-4 sm:p-5"
               >
                 <div className="flex items-start gap-3">
                   <span
                     className={`mt-0.5 shrink-0 w-6 h-6 rounded-full text-white text-sm font-bold grid place-items-center ${
-                      correct ? "bg-emerald-500" : "bg-rose-500"
+                      correct ? "bg-emerald-600" : "bg-red-600"
                     }`}
                   >
                     {correct ? "✓" : "✕"}
@@ -137,7 +143,7 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
                               isCorrect
                                 ? "bg-emerald-50 text-emerald-800 font-medium"
                                 : isYours
-                                ? "bg-rose-50 text-rose-800"
+                                ? "bg-red-50 text-red-800"
                                 : "text-slate-600"
                             }`}
                           >
@@ -208,40 +214,40 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
       </div>
       {subtitle && <p className="text-sm text-slate-500 mb-3">{subtitle}</p>}
 
-      <div className="h-2 w-full bg-slate-300 rounded-full overflow-hidden mb-6">
+      <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden mb-6">
         <div
-          className="h-full bg-black transition-all duration-300"
+          className="h-full bg-blue-800 transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
 
-      <div className="rounded-2xl border border-slate-300 bg-white p-6 shadow-sm">
-        <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-indigo-600">
+      <div className="rounded-lg border border-slate-200 bg-white p-4 sm:p-6 shadow-sm">
+        <div className="mb-1 text-xs font-semibold uppercase tracking-widest text-blue-800">
           {q.category}
         </div>
-        <p className="text-lg font-semibold text-slate-800 mb-5">{q.question}</p>
+        <p className="text-lg font-semibold text-slate-900 mb-5">{q.question}</p>
 
         <div className="space-y-3">
           {q.shuffledOptions.map((opt, oi) => {
             const selected = chosen === oi;
             let cls =
-              "border-slate-300 bg-white hover:border-indigo-400 hover:bg-indigo-50";
+              "border-slate-200 bg-white hover:border-blue-700 hover:bg-blue-50/50";
             if (isRevealed) {
               if (oi === q.shuffledAnswer)
-                cls = "border-emerald-400 bg-emerald-50";
-              else if (selected) cls = "border-rose-400 bg-rose-50";
-              else cls = "border-slate-300 bg-white opacity-70";
+                cls = "border-emerald-500 bg-emerald-50";
+              else if (selected) cls = "border-red-400 bg-red-50";
+              else cls = "border-slate-200 bg-white opacity-60";
             } else if (selected) {
-              cls = "border-indigo-500 bg-indigo-50";
+              cls = "border-blue-700 bg-blue-50";
             }
             return (
               <button
                 key={oi}
                 onClick={() => choose(oi)}
                 disabled={isRevealed}
-                className={`w-full text-left px-4 py-3 rounded-xl border-2 transition flex items-start gap-3 ${cls}`}
+                className={`w-full text-left px-3 sm:px-4 py-3 rounded-lg border-2 transition flex items-start gap-3 ${cls}`}
               >
-                <span className="shrink-0 w-7 h-7 rounded-full bg-slate-100 text-slate-700 font-bold text-sm grid place-items-center">
+                <span className="shrink-0 w-7 h-7 rounded-full bg-slate-100 text-slate-700 font-semibold text-sm grid place-items-center">
                   {LETTERS[oi]}
                 </span>
                 <span className="text-slate-800">{opt}</span>
@@ -252,10 +258,10 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
 
         {isRevealed && (
           <div
-            className={`mt-5 rounded-xl px-4 py-3 text-sm ${
+            className={`mt-5 rounded-lg px-4 py-3 text-sm ${
               chosen === q.shuffledAnswer
                 ? "bg-emerald-50 text-emerald-800"
-                : "bg-rose-50 text-rose-800"
+                : "bg-red-50 text-red-800"
             }`}
           >
             <span className="font-bold">
@@ -273,15 +279,15 @@ export default function Quiz({ mode, pool, title, subtitle }: QuizProps) {
           disabled={current === 0}
           className="px-4 py-2 rounded-lg text-slate-600 font-medium disabled:opacity-40 hover:bg-slate-100 transition"
         >
-          ← Back
+          Back
         </button>
 
         <button
           onClick={goNext}
           disabled={chosen === null}
-          className="px-6 py-2.5 rounded-lg bg-black text-white font-semibold disabled:opacity-40 hover:bg-slate-800 transition"
+          className="px-6 py-2.5 rounded-lg bg-blue-800 text-white font-semibold disabled:opacity-40 hover:bg-blue-900 transition"
         >
-          {isLast ? "Finish" : "Next →"}
+          {isLast ? "Finish" : "Next"}
         </button>
       </div>
     </div>

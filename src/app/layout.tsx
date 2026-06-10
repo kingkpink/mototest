@@ -45,30 +45,55 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
-        <header className="border-b border-slate-300 bg-white">
-          <nav className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-            <Link href="/" className="font-bold text-slate-800 flex items-center gap-2">
-              <span className="text-xl">🏍️</span>
-              <span>PA Motorcycle Test</span>
+        <header className="border-b border-slate-200 bg-white">
+          <nav className="max-w-5xl mx-auto px-4 flex flex-wrap items-center justify-between gap-x-4 py-2.5 sm:h-14 sm:py-0">
+            <Link href="/" className="flex items-center gap-2.5">
+              <svg
+                className="h-7 w-auto text-blue-800"
+                viewBox="0 0 100 66"
+                aria-hidden="true"
+              >
+                {/* Simplified Pennsylvania silhouette: Erie notch top-left,
+                    Delaware River jags on the east edge */}
+                <path
+                  fill="currentColor"
+                  d="M4 62 L4 17 L7 14 L13 7 L17 11 L92 11 L94 17 L90 22 L95 28 L89 36 L94 44 L89 50 L93 56 L88 62 Z"
+                />
+                <text
+                  x="47"
+                  y="45.3"
+                  textAnchor="middle"
+                  fill="#ffffff"
+                  fontSize="30"
+                  fontWeight="700"
+                  fontFamily="inherit"
+                  letterSpacing="1"
+                >
+                  PA
+                </text>
+              </svg>
+              <span className="font-semibold tracking-tight text-slate-900">
+                Motorcycle Test
+              </span>
             </Link>
-            <div className="flex items-center gap-1 text-sm font-medium">
-              <Link href="/about" className="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100">
+            <div className="-mx-1 flex w-full items-center gap-0.5 overflow-x-auto whitespace-nowrap pt-1.5 text-sm font-medium sm:w-auto sm:pt-0">
+              <Link href="/about" className="px-3 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900">
                 The Test
               </Link>
-              <Link href="/exam" className="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100">
+              <Link href="/exam" className="px-3 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900">
                 Mock Exam
               </Link>
-              <Link href="/practice" className="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100">
+              <Link href="/practice" className="px-3 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900">
                 Practice
               </Link>
-              <Link href="/guide" className="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100">
+              <Link href="/guide" className="px-3 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900">
                 Study Guide
               </Link>
             </div>
           </nav>
         </header>
-        <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-8">{children}</main>
-        <footer className="border-t border-slate-300 bg-white py-6 text-center text-xs text-slate-500">
+        <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 sm:py-10">{children}</main>
+        <footer className="border-t border-slate-200 bg-white py-6 px-4 text-center text-xs leading-relaxed text-slate-500">
           Practice questions based on the PennDOT Motorcycle Operator Manual (
           <a
             href="/pub-147-motorcycle-manual.pdf"

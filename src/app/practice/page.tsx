@@ -10,7 +10,7 @@ type Selection = Category | "ALL" | "MISSED" | null;
 function accuracyColor(pct: number): string {
   if (pct >= 80) return "text-emerald-600";
   if (pct >= 60) return "text-amber-600";
-  return "text-rose-600";
+  return "text-red-600";
 }
 
 export default function PracticePage() {
@@ -46,7 +46,7 @@ export default function PracticePage() {
       <div>
         <button
           onClick={() => setSelected(null)}
-          className="mb-5 text-sm font-medium text-indigo-600 hover:underline"
+          className="mb-5 text-sm font-medium text-blue-800 hover:underline"
         >
           ← Choose another topic
         </button>
@@ -73,28 +73,28 @@ export default function PracticePage() {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold text-slate-800">Practice by topic</h1>
+      <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Practice by topic</h1>
       <p className="mt-1 text-slate-600">
         Pick an area to drill. You&apos;ll see the correct answer and an
         explanation right after each question.
       </p>
-      <p className="mt-2 text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2">
-        ✅ These questions closely match what riders saw on the real PA permit
+      <p className="mt-3 text-sm text-slate-600 border-l-2 border-blue-800 pl-3">
+        These questions closely match what riders saw on the real PA permit
         test at the DMV.
       </p>
 
       {missedIds.length > 0 && (
         <button
           onClick={() => setSelected("MISSED")}
-          className="mt-6 w-full text-left rounded-xl border-2 border-rose-200 bg-rose-50 p-5 hover:border-rose-400 transition"
+          className="mt-6 w-full text-left rounded-lg border border-red-200 bg-red-50 p-5 hover:border-red-400 transition"
         >
           <div className="flex items-center justify-between">
-            <span className="font-bold text-rose-800">Review missed</span>
-            <span className="text-sm text-rose-600 font-medium">
+            <span className="font-semibold text-red-900">Review missed</span>
+            <span className="text-sm text-red-700 font-medium">
               {missedIds.length} question{missedIds.length === 1 ? "" : "s"}
             </span>
           </div>
-          <p className="text-sm text-rose-700/80 mt-1">
+          <p className="text-sm text-red-800/80 mt-1">
             Drill the questions you got wrong until they stick.
           </p>
         </button>
@@ -104,15 +104,15 @@ export default function PracticePage() {
         onClick={() => setSelected("ALL")}
         className={`${
           missedIds.length > 0 ? "mt-4" : "mt-6"
-        } w-full text-left rounded-xl border-2 border-indigo-200 bg-indigo-50 p-5 hover:border-indigo-400 transition`}
+        } w-full text-left rounded-lg border border-blue-200 bg-blue-50 p-5 hover:border-blue-500 transition`}
       >
         <div className="flex items-center justify-between">
-          <span className="font-bold text-indigo-800">All topics</span>
-          <span className="text-sm text-indigo-600 font-medium">
+          <span className="font-semibold text-blue-900">All topics</span>
+          <span className="text-sm text-blue-800 font-medium">
             {QUESTIONS.length} questions
           </span>
         </div>
-        <p className="text-sm text-indigo-700/80 mt-1">
+        <p className="text-sm text-blue-900/70 mt-1">
           Every question in the bank, shuffled.
         </p>
       </button>
@@ -128,10 +128,10 @@ export default function PracticePage() {
             <button
               key={c}
               onClick={() => setSelected(c)}
-              className="text-left rounded-xl border border-slate-300 bg-white p-4 hover:border-indigo-400 hover:shadow-sm transition"
+              className="text-left rounded-lg border border-slate-200 bg-white p-4 hover:border-blue-700 hover:shadow-sm transition"
             >
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-slate-800">{c}</span>
+                <span className="font-semibold text-slate-900">{c}</span>
                 <span className="text-xs text-slate-500 font-medium">
                   {counts.get(c) ?? 0} Q
                 </span>

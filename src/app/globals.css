@@ -22,4 +22,6 @@ body {
   background: #f8fafc;
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
 }

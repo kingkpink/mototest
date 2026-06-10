@@ -85,10 +85,10 @@ export default function AboutPage() {
       />
       <BreadcrumbJsonLd name="What the Test Is Like" path="/about" />
       <header>
-        <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 text-indigo-700 px-3 py-1 text-xs font-semibold mb-3">
+        <p className="text-xs font-semibold uppercase tracking-widest text-blue-800 mb-3">
           Learner&apos;s Permit Knowledge Test
-        </div>
-        <h1 className="text-3xl font-bold text-slate-900">
+        </p>
+        <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
           What the test is like
         </h1>
         <p className="mt-2 text-slate-600">
@@ -103,9 +103,9 @@ export default function AboutPage() {
         {TEST_FACTS.slice(0, 6).map((f) => (
           <div
             key={f.label}
-            className="rounded-xl border border-slate-300 bg-white p-4 text-center"
+            className="rounded-lg border border-slate-200 bg-white p-4 text-center"
           >
-            <div className="text-base font-bold text-indigo-700">{f.value}</div>
+            <div className="text-base font-semibold text-slate-900">{f.value}</div>
             <div className="text-xs text-slate-500 mt-1">{f.label}</div>
           </div>
         ))}
@@ -115,7 +115,7 @@ export default function AboutPage() {
       <Section title="Format & structure">
         <div className="space-y-3">
           {FORMAT.map((f) => (
-            <div key={f.q} className="rounded-xl border border-slate-300 bg-white p-5">
+            <div key={f.q} className="rounded-lg border border-slate-200 bg-white p-5">
               <h3 className="font-semibold text-slate-800">{f.q}</h3>
               <p className="mt-1 text-sm text-slate-600">{f.a}</p>
             </div>
@@ -125,7 +125,7 @@ export default function AboutPage() {
 
       {/* Sample question */}
       <Section title="What a question looks like">
-        <div className="rounded-2xl border border-slate-300 bg-white p-6">
+        <div className="rounded-lg border border-slate-200 bg-white p-5 sm:p-6">
           <p className="font-semibold text-slate-800">
             Your motorcycle has two brakes. Use both brakes:
           </p>
@@ -157,10 +157,10 @@ export default function AboutPage() {
 
       {/* Topics covered */}
       <Section title="Topics the questions cover">
-        <ul className="rounded-2xl border border-slate-300 bg-white p-5 grid sm:grid-cols-2 gap-2">
+        <ul className="rounded-lg border border-slate-200 bg-white p-5 grid sm:grid-cols-2 gap-2">
           {COVERED.map((c) => (
-            <li key={c} className="flex gap-2 text-sm text-slate-700">
-              <span className="text-black mt-0.5">●</span>
+            <li key={c} className="flex gap-2.5 text-sm text-slate-700">
+              <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-blue-800" />
               {c}
             </li>
           ))}
@@ -182,7 +182,7 @@ export default function AboutPage() {
         <ol className="space-y-3">
           {LICENSE_STEPS.map((s, i) => (
             <li key={s} className="flex gap-3 text-sm text-slate-700">
-              <span className="shrink-0 w-6 h-6 rounded-full bg-indigo-600 text-white font-bold grid place-items-center">
+              <span className="shrink-0 w-6 h-6 rounded-full bg-blue-800 text-white text-xs font-semibold grid place-items-center">
                 {i + 1}
               </span>
               <span className="pt-0.5">{s}</span>
@@ -201,7 +201,7 @@ export default function AboutPage() {
       </div>
 
       <Section title="License restrictions to know">
-        <div className="rounded-2xl border border-slate-300 bg-white p-5 space-y-3">
+        <div className="rounded-lg border border-slate-200 bg-white p-5 space-y-3">
           {RESTRICTIONS.map((r) => (
             <div key={r.code} className="text-sm">
               <span className="font-bold text-slate-800">{r.code}</span>
@@ -212,16 +212,16 @@ export default function AboutPage() {
       </Section>
 
       {/* CTA */}
-      <section className="rounded-2xl bg-slate-100 border border-slate-300 text-slate-900 p-8 text-center">
-        <h2 className="text-xl font-bold">Know what to expect? Try it.</h2>
+      <section className="rounded-lg bg-white border border-slate-200 text-slate-900 p-6 sm:p-8 text-center">
+        <h2 className="text-xl font-semibold">Know what to expect? Try it.</h2>
         <p className="mt-1 text-slate-600 text-sm">
           Take a 20-question mock exam under the same 80%-to-pass rules.
         </p>
         <Link
           href="/exam"
-          className="inline-block mt-4 px-6 py-2.5 rounded-lg bg-black text-white font-semibold hover:bg-slate-800 transition"
+          className="inline-block mt-4 px-6 py-2.5 rounded-lg bg-blue-800 text-white font-semibold hover:bg-blue-900 transition"
         >
-          Start mock exam →
+          Start mock exam
         </Link>
       </section>
 
@@ -249,7 +249,7 @@ function Section({
 }) {
   return (
     <section>
-      <h2 className="text-lg font-bold text-slate-800 mb-3">{title}</h2>
+      <h2 className="text-lg font-semibold text-slate-900 tracking-tight mb-3">{title}</h2>
       {children}
     </section>
   );
@@ -257,10 +257,10 @@ function Section({
 
 function ListCard({ items }: { items: string[] }) {
   return (
-    <ul className="rounded-2xl border border-slate-300 bg-white p-5 space-y-2 h-full">
+    <ul className="rounded-lg border border-slate-200 bg-white p-5 space-y-2 h-full">
       {items.map((it) => (
-        <li key={it} className="flex gap-2 text-sm text-slate-700">
-          <span className="text-black mt-0.5">●</span>
+        <li key={it} className="flex gap-2.5 text-sm text-slate-700">
+          <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-blue-800" />
           {it}
         </li>
       ))}
