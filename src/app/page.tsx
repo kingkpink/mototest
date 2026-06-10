@@ -10,7 +10,7 @@ const websiteStructuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "PA Motorcycle Test",
-  url: "https://pamotorcycletest.com",
+  url: "https://www.pamotorcycletest.com",
   description:
     "Free Pennsylvania motorcycle permit practice test based on the PennDOT Motorcycle Operator Manual (PUB 147).",
 };

@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pamotorcycletest.com"),
+  metadataBase: new URL("https://www.pamotorcycletest.com"),
   title: {
     default: "PA Motorcycle Practice Test — Class M Permit Prep",
     template: "%s — PA Motorcycle Practice Test",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "PA Motorcycle Practice Test — Class M Permit Prep",
     description:
       "Free PA motorcycle permit practice test. Questions nearly identical to the real DMV exam. 20 questions, 80% to pass.",
-    url: "https://pamotorcycletest.com",
+    url: "https://www.pamotorcycletest.com",
     siteName: "PA Motorcycle Test",
     locale: "en_US",
     type: "website",

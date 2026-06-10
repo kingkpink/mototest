@@ -1,4 +1,4 @@
-const BASE = "https://pamotorcycletest.com";
+const BASE = "https://www.pamotorcycletest.com";
 
 // BreadcrumbList structured data (schema.org) — shows the site hierarchy
 // under the result in Google/Bing SERPs.
